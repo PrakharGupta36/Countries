@@ -27,7 +27,6 @@ export async function getStaticProps(e) {
 }
 
 export default function Details({ list }) {
-  console.log(list);
   return (
     <div className='details'>
       <button onClick={() => Router.push("/")}> Back </button>
