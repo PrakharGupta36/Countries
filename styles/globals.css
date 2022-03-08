@@ -13,6 +13,8 @@
   --accent-color: #2b3743;
   --color: white;
   --color-input: rgba(255, 255, 255, 0.6);
+  --accent-color-button: #ffffff;
+  --color-button: black;
 }
 
 .light-mode {
@@ -20,6 +22,8 @@
   --accent-color: #ffffff;
   --color: black;
   --color-input: rgba(0, 0, 0, 0.6);
+  --accent-color-button: #2b3743;
+  --color-button: white;
 }
 
 html,
@@ -31,8 +35,6 @@ body {
   background-color: var(--background-color);
   transition: ease-in-out 200ms;
 }
-
-
 
 nav a {
   text-decoration: none;
@@ -96,19 +98,19 @@ nav ul {
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
-.card h4{
+.card h4 {
   font-size: 1.5rem;
 }
 
 .card-info,
 .card-heading {
-  padding: .75rem 1rem;
+  padding: 0.75rem 1rem;
 }
 
 .card-info {
   display: grid;
   gap: 1rem;
-  font-size: .8rem;
+  font-size: 0.8rem;
   padding-bottom: 2rem;
 }
 
@@ -137,28 +139,70 @@ nav ul {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .example {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
-.details{
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-start;
-  margin: 1rem;
-  flex-direction: column;
+.details {
+  display: grid;
+  justify-content: center;
+  margin: 2rem 0;
 }
 
-.details > button{
+.details > button {
   background-color: var(--accent-color);
-  padding: .5rem .75rem;
+  padding: 0.5rem 0.75rem;
   color: var(--color);
   border: none;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   cursor: pointer;
+  margin: 0 auto;
+  justify-self: start;
 }
 
-.card-details{
-  flex-wrap: wrap;
-  gap: 5rem;
+.card-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  background-color: var(--accent-color);
+  margin: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(50, 50, 93, 0.5) 0px 50px 100px -20px;
+}
+
+.card-details-2 h1 {
+  padding-left: 1rem;
+}
+
+.card-details-1 img {
+  border-radius: 0.5rem 0.5rem 0 0;
+  width: 100%;
+}
+
+.card-details-2-info {
+  display: grid;
+  margin: 2rem 0;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.card-details-2-info p span:not(.not-span) {
+  font-weight: 600;
+  padding: 0;
+}
+
+.card-details-2-info p {
+  font-weight: 300;
+}
+
+.not-span-button {
+  background-color: var(--accent-color-button);
+  box-shadow: 1px 2px 10px 10px rgba(0, 0, 0, 0.1) ;
+  color: var(--color-button);
+  border: 1px solid white;
+  border-radius: .25rem;
+  padding: 0.25rem 1rem;
+  margin: 1rem;
 }

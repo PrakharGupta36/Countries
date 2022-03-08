@@ -6,16 +6,24 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest",
+    "cypress:open": "cypress open",
+    "e2e": "cypress open"
   },
   "dependencies": {
+    "framer-motion": "^6.2.8",
+    "motion": "^10.6.2",
     "next": "12.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.3.1"
   },
   "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "cypress": "^9.5.1",
     "eslint": "8.10.0",
-    "eslint-config-next": "12.1.0"
+    "eslint-config-next": "12.1.0",
+    "jest": "^27.5.1"
   }
 }

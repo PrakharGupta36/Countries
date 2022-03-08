@@ -1,10 +1,15 @@
-export default function Search() {
+export default function Search(props) {
   return (
-    <select name='search' defaultValue={"All"} id='search'>
-      <option value='All' disabled>
+    <select
+      name='search'
+      onChange={props.change}
+      defaultValue={""}
+      id='search'>
+      <option value='' disabled>
         {" "}
-        Filter By Region{" "}
+        Filter By Continents{" "}
       </option>
+      <option value='All'> All Continents </option>
       <option value='Africa'> Africa </option>
       <option value='America'> America </option>
       <option value='Asia'> Asia </option>
