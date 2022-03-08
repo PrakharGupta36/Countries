@@ -43,7 +43,6 @@ export default function Details({ list }) {
           currencies,
           languages,
         } = i;
-        console.log(i);
         return (
           <div key={index} className='card-details'>
             <div className='card-details-1'>
