@@ -29,7 +29,10 @@ export async function getStaticProps(e) {
 export default function Details({ list }) {
   return (
     <div className='details'>
-      <button id="button-details" onClick={() => Router.push("/")}> Back </button>
+      <button id='button-details' onClick={() => Router.push("/")}>
+        {" "}
+        Back{" "}
+      </button>
       {list.map((i, index) => {
         const {
           name,
@@ -50,64 +53,81 @@ export default function Details({ list }) {
               <img src={flags.png} alt='img' />{" "}
             </div>
             <div className='card-details-2'>
-              <h1> {name} </h1>
+              <h1> {typeof name === undefined ? "Not Available" : name} </h1>
               <div className='card-details-2-info'>
                 <p>
                   {" "}
-                  <span> Native Name : </span> {nativeName}{" "}
+                  <span> Native Name : </span>{" "}
+                  {typeof nativeName === undefined
+                    ? "Not Available"
+                    : nativeName}{" "}
                 </p>
                 <p>
                   {" "}
-                  <span> Population : </span> {population}{" "}
+                  <span> Population : </span>{" "}
+                  {typeof population === undefined
+                    ? "Not Available"
+                    : population}{" "}
                 </p>
                 <p>
                   {" "}
-                  <span> Region : </span> {region}{" "}
+                  <span> Region : </span>{" "}
+                  {typeof region === undefined ? "Not Available" : region}{" "}
                 </p>
                 <p>
                   {" "}
-                  <span> Sub Region : </span> {subregion}{" "}
+                  <span> Sub Region : </span>{" "}
+                  {typeof subregion === undefined ? "Not Available" : subregion}{" "}
                 </p>
                 <p>
                   {" "}
-                  <span> Top Level Domain : </span> {topLevelDomain}{" "}
+                  <span> Top Level Domain : </span>{" "}
+                  {typeof topLevelDomain === undefined
+                    ? "Not Available"
+                    : topLevelDomain}{" "}
                 </p>
                 <p>
                   {" "}
                   <span> Currencies : </span>{" "}
-                  {currencies.map((i, index) => {
-                    return (
-                      <span key={index} className='not-span'>
-                        {" "}
-                        {i.name},{" "}
-                      </span>
-                    );
-                  })}{" "}
+                  {Array.isArray(currencies)
+                    ? currencies.map((i, index) => {
+                        return (
+                          <span key={index} className='not-span'>
+                            {" "}
+                            {i.name},{" "}
+                          </span>
+                        );
+                      })
+                    : "Not Available"}{" "}
                 </p>
                 <p>
                   {" "}
                   <span> Languages : </span>{" "}
-                  {languages.map((i, index) => {
-                    return (
-                      <span key={index} className='not-span'>
-                        {" "}
-                        {i.name},{" "}
-                      </span>
-                    );
-                  })}{" "}
+                  {Array.isArray(languages)
+                    ? languages.map((i, index) => {
+                        return (
+                          <span key={index} className='not-span'>
+                            {" "}
+                            {i.name},{" "}
+                          </span>
+                        );
+                      })
+                    : "Not Available"}{" "}
                 </p>
-                {/* <p>
+                <p>
                   {" "}
                   <span> Borders : </span> <br />{" "}
-                  {borders.map((i, index) => {
-                    return (
-                      <button key={index} className='not-span-button'>
-                        {" "}
-                        {i},{" "}
-                      </button>
-                    );
-                  })}{" "}
-                </p> */}
+                  {Array.isArray(borders)
+                    ? borders.map((i, index) => {
+                        return (
+                          <button key={index} className='not-span-button'>
+                            {" "}
+                            {i},{" "}
+                          </button>
+                        );
+                      })
+                    : "Not Available"}{" "}
+                </p>
               </div>
             </div>
           </div>
