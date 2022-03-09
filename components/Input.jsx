@@ -3,7 +3,7 @@ export default function Input(props) {
     <input
       aria-label='input'
       onChange={props.searchChange}
-      placeholder='Search for a country'
+      placeholder='Search for a country '
       type='text'
     />
   );

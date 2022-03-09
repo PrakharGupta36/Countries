@@ -2,6 +2,7 @@ import Link from "next/link";
 import Input from "../components/Input";
 import { useState } from "react";
 import Search from "../components/Search";
+import { motion, LayoutGroup } from "framer-motion";
 
 export async function getServerSideProps() {
   const res = await fetch(`https://restcountries.com/v2/all`);
@@ -18,57 +19,84 @@ export default function Home({ list }) {
     return i.name.toLowerCase().includes(searchField.toLowerCase());
   });
 
-
   console.log(filtered.length);
   return (
     <>
+      <head>
+        <title> Countries </title>
+        <meta charset='UTF-8' />
+        <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta name='description' content='' />
+      </head>
       <div className='nav-2 center-center'>
         <Input
           searchChange={(e) => {
             setSearchField(e.target.value);
           }}
         />
-       
       </div>
-      <div className='card-list center-center'>
-        {filtered.length === 0 ? (
-          <h1> Not here... </h1>
-        ) : (
-          filtered.slice(0, load).map((i, index) => {
-            const { flags, name, population, region, capital } = i;
-            return (
-              <Link key={index} href={{ pathname: `/${name}` }}>
-                <div
-                  className='card'
-                  onClick={() => {
-                    console.log(name);
+      <motion.div
+        initial='hidden'
+        animate='visible'
+        variants={{
+          hidden: {
+            scale: 0.1,
+            opacity: 0,
+          },
+          visible: {
+            scale: 1,
+            opacity: 1,
+            transition: { duration: 0.75 },
+          },
+        }}>
+        <div className='card-list center-center'>
+          {filtered.length === 0 ? (
+            <h1> Not here... </h1>
+          ) : (
+            filtered.slice(0, load).map((i, index) => {
+              const { flags, name, population, region, capital } = i;
+              return (
+                <motion.div
+                  whileHover={{
+                    scale: 1.2,
+                    transition: { duration: 0.25 },
                   }}
-                  id={`link${index}`}>
-                  {" "}
-                  <img loading='lazy' src={flags.png} alt='img' />
-                  <div className='card-heading'>
-                    <h4> {name} </h4>
-                  </div>
-                  <div className='card-info'>
-                    <p>
+                  whileTap={{ scale: 1 }}>
+                  <Link key={index} href={{ pathname: `/${name}` }}>
+                    <div
+                      className='card'
+                      onClick={() => {
+                        console.log(name);
+                      }}
+                      id={`link${index}`}>
                       {" "}
-                      <span> Population </span> : {population}{" "}
-                    </p>
-                    <p>
-                      {" "}
-                      <span> Region </span> : {region}{" "}
-                    </p>
-                    <p>
-                      {" "}
-                      <span> Capital </span>: {capital}{" "}
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            );
-          })
-        )}
-      </div>
+                      <img loading='lazy' src={flags.png} alt='img' />
+                      <div className='card-heading'>
+                        <h4> {name} </h4>
+                      </div>
+                      <div className='card-info'>
+                        <p>
+                          {" "}
+                          <span> Population </span> : {population}{" "}
+                        </p>
+                        <p>
+                          {" "}
+                          <span> Region </span> : {region}{" "}
+                        </p>
+                        <p>
+                          {" "}
+                          <span> Capital </span>: {capital}{" "}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              );
+            })
+          )}
+        </div>
+      </motion.div>
       <div className='buttons'>
         <button
           id='load'
@@ -82,8 +110,7 @@ export default function Home({ list }) {
         </button>
         <button
           onClick={() => {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
+            window.scrollTo({ top: 0, behavior: "smooth" });
           }}>
           {" "}
           Back to the Top{" "}

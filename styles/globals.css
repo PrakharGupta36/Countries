@@ -9,12 +9,13 @@
 }
 
 .dark-mode {
-  --background-color: #202d36;
-  --accent-color: #2b3743;
+  --background-color: #0e1418;
+  --accent-color: #14191f;
   --color: white;
   --color-input: rgba(255, 255, 255, 0.6);
   --accent-color-button: #ffffff;
   --color-button: black;
+  --border: 1px solid white;
 }
 
 .light-mode {
@@ -24,6 +25,7 @@
   --color-input: rgba(0, 0, 0, 0.6);
   --accent-color-button: #2b3743;
   --color-button: white;
+  --border: 1px solid black;
 }
 
 html,
@@ -54,6 +56,24 @@ nav ul {
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
+.nav-logo a {
+  text-align: center;
+  background: linear-gradient(-45deg, #4158d0, #c850c0, #ffcc70);
+  background-size: 200% auto;
+  color: #000;
+  font-size: 1.5rem;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 1s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
 .center-center {
   display: flex;
   align-items: center;
@@ -75,6 +95,7 @@ nav ul {
   border: none;
   background-color: var(--accent-color);
   color: var(--color);
+  border: var(--border);
 }
 
 .nav-2 ::placeholder {
@@ -158,18 +179,20 @@ nav ul {
   cursor: pointer;
   margin: 0 auto;
   justify-self: start;
+  border: var(--border);
 }
 
 .card-details {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  align-items: center;
-  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 4rem;
+  /* background-color: var(--accent-color); */
   justify-content: center;
-  background-color: var(--accent-color);
-  margin: 2rem;
+  align-items: flex-start;
+  margin: 2rem auto;
+  width: 100%;
   border-radius: 0.5rem;
-  box-shadow: rgba(50, 50, 93, 0.5) 0px 50px 100px -20px;
 }
 
 .card-details-2 h1 {
@@ -177,7 +200,7 @@ nav ul {
 }
 
 .card-details-1 img {
-  border-radius: 0.5rem 0.5rem 0 0;
+  border-radius: 0.5rem 0.5rem;
   width: 100%;
 }
 
