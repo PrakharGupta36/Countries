@@ -12,10 +12,13 @@ export async function getServerSideProps() {
 
 export default function Home({ list }) {
   const [searchField, setSearchField] = useState("");
+  const [load, setLoad] = useState(10);
 
   const filtered = list.filter((i) => {
     return i.name.toLowerCase().includes(searchField.toLowerCase());
   });
+
+
   console.log(filtered.length);
   return (
     <>
@@ -25,17 +28,13 @@ export default function Home({ list }) {
             setSearchField(e.target.value);
           }}
         />
-        <Search
-          change={(e) => {
-            console.log(e.target.value);
-          }}
-        />
+       
       </div>
       <div className='card-list center-center'>
         {filtered.length === 0 ? (
           <h1> Not here... </h1>
         ) : (
-          filtered.map((i, index) => {
+          filtered.slice(0, load).map((i, index) => {
             const { flags, name, population, region, capital } = i;
             return (
               <Link key={index} href={{ pathname: `/${name}` }}>
@@ -69,6 +68,26 @@ export default function Home({ list }) {
             );
           })
         )}
+      </div>
+      <div className='buttons'>
+        <button
+          id='load'
+          onClick={() => {
+            setLoad((load += 10));
+            document.documentElement.scrollTop =
+              document.documentElement.scrollHeight;
+          }}>
+          {" "}
+          Load More{" "}
+        </button>
+        <button
+          onClick={() => {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+          }}>
+          {" "}
+          Back to the Top{" "}
+        </button>
       </div>
     </>
   );

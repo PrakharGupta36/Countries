@@ -4,9 +4,8 @@ context("Clicks", () => {
   });
 
   it("click", () => {
-    for (let i = 0; i <= 249; i++) {
-      cy.get(`#link${i}`).click({ multiple: true });
-      cy.get("#button-details").click({ multiple: true });
+    for (let i = 0; i <= 30; i++) {
+      cy.get("#load").click({ multiple: true });
     }
   });
 });
