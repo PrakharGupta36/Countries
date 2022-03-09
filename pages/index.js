@@ -25,7 +25,6 @@ export default function Home({ list }) {
       <head>
         <title> Countries </title>
         <meta charset='UTF-8' />
-        <meta http-equiv='X-UA-Compatible' content='IE=edge' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <meta name='description' content='' />
       </head>
@@ -62,8 +61,9 @@ export default function Home({ list }) {
                     scale: 1.2,
                     transition: { duration: 0.25 },
                   }}
+                  key={index}
                   whileTap={{ scale: 1 }}>
-                  <Link key={index} href={{ pathname: `/${name}` }}>
+                  <Link href={{ pathname: `/${name}` }}>
                     <div
                       className='card'
                       onClick={() => {
