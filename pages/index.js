@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Input from "../components/Input";
 import { useState } from "react";
-import Search from "../components/Search";
 import { motion, LayoutGroup } from "framer-motion";
 
 export async function getServerSideProps() {
@@ -73,20 +72,34 @@ export default function Home({ list }) {
                       {" "}
                       <img loading='lazy' src={flags.png} alt='img' />
                       <div className='card-heading'>
-                        <h4> {name} </h4>
+                        <h4>
+                          {" "}
+                          {typeof name === undefined
+                            ? "Not available"
+                            : name}{" "}
+                        </h4>
                       </div>
                       <div className='card-info'>
                         <p>
                           {" "}
-                          <span> Population </span> : {population}{" "}
+                          <span> Population </span> :{" "}
+                          {typeof population === undefined
+                            ? "Not available"
+                            : population}{" "}
                         </p>
                         <p>
                           {" "}
-                          <span> Region </span> : {region}{" "}
+                          <span> Region </span> :{" "}
+                          {typeof region === undefined
+                            ? "Not available"
+                            : region}{" "}
                         </p>
                         <p>
                           {" "}
-                          <span> Capital </span>: {capital}{" "}
+                          <span> Capital </span>:{" "}
+                          {typeof capital === undefined
+                            ? "Not available"
+                            : capital}{" "}
                         </p>
                       </div>
                     </div>
